@@ -1,6 +1,7 @@
 ﻿Desktop Search Engine 
 ======================
 Pthreads | Reader/Writer Lock | Fine-grained Bucket-level Locking | C
+
 Author: Aman Chadha
 
 
