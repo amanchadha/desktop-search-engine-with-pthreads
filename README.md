@@ -46,6 +46,7 @@ Indexer
 
 There should be one or more indexer threads in your program. The scanner should read feil names from a the scanner thread. An indexer takes as input a file name, opens that file, and then reads all the words in the file. You can use @strtok_r@, separating on whitespace (spaces, tabs, newlines) to find words. For each word it finds, the indexer adds an entry to a hash table with the word and the file name/line number where it appears. The code should look something like this:
 
+```
   FILE * file;
 
   file = fopen(filename, "r");
@@ -75,6 +76,7 @@ There should be one or more indexer threads in your program. The scanner should 
   }
 
   fclose(file);
+```
 
 You need to built a data structure to pass file names from the file system scanner to the indexer. This is a producer-consumer type of problem. There can be more than one indexer running at the same time, so you may want a bounded buffer of file names for the indexers to read from.
 
@@ -100,13 +102,13 @@ If the user enters a single word, you should search for that word across all fil
 
 The search interface searches the index and prints out the words that it find in the following format: If the word is found, it prints:
 
-  FOUND: file-name line-number
+  ```FOUND: file-name line-number```
 
 where line-numbers start at 1 for the first line of the file (and not zero). You should do this for each line and each file.
 
 If not found, it prints:
 
-  Word not found.
+  ```Word not found.```
 
 The program should exit when the user enters ctrl-D at the search interface (indicating end of file).
 
@@ -119,7 +121,7 @@ Advanced search
 ----------------
 You can also search a specific file for a string. If the user enters a line with two strings, the first string is the pathname of the file to search, and the second word is the word to search for. For example:
 
-   files/test.c printf
+   ```files/test.c printf```
 
 would look for all lines containing "printf" in the file files/printf.c.
 
@@ -166,6 +168,7 @@ index_search_results_t * find_in_index(char * word) searches for word@@ in the i
 
 Results are returned as a data structure:
 
+```
   typedef struct index_search_elem_s {
 
     char file_name[MAXPATH];
@@ -181,6 +184,7 @@ Results are returned as a data structure:
     index_search_elem_t results[1];
 
   } index_search_results_t;
+```
 
 The sample code shows how to use this structure; you should make sure call free on the pointer returned from find_in_index().
 
