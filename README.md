@@ -35,7 +35,7 @@ File system scanner
 -------------------
 The file system scanner can be quite simple: it just reads in a list of files to scan. A list of files in a directory can be generated with this command:
 
-  find . -type f > list-of-files.txt
+  ```find . -type f > list-of-files.txt```
 
 This fills in the file list-of-files.txt with all the files within and beneath the current directory. You can assume that file names will be less than 511 characters (defined as MAXPATH in the provided code).
 The scanner is a producer, as in a producer/consumer code. It should write file names to be scanned to a bounded buffer.
@@ -127,7 +127,7 @@ would look for all lines containing "printf" in the file files/printf.c.
 
 If the file provided has not yet been indexed, the thread should wait until the file is indexed and then print results. NOTE: this requires the use of condition variables. If the all the files have been indexed and the file name is not one of the files, you should print out:
 
-  ERROR: File <filename> not found
+ ```ERROR: File <filename> not found```
 
 where <filename> is replaced by the filename in the search.
 
@@ -147,7 +147,7 @@ Specification
 -------------
 The program should be started with the following command line:
 
-  search-engine num-indexer-threads file-list
+  ```search-engine num-indexer-threads file-list```
 
 where num-indexer-threads is the number of threads running the indexer and file-list is the list of files for the file system scanner to use.
 
